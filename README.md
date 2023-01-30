@@ -2,3 +2,4 @@
 
 https://user-images.githubusercontent.com/60129025/215397687-59ce1848-0d13-4c20-b7f1-0909c90d89c5.mov
 
+_in chicken foot the player with the fewest points wins_
