@@ -199,7 +199,7 @@ void Player::copyChain(Player::node *&head, Player::node *copy)
  */
 void Player::displayHand()
 {
-    cout << "Current Hand: " << endl;
+    cout << "Current Hand:" << endl;
     displayHand(hand);
     cout << endl;
 }
@@ -209,10 +209,14 @@ void Player::displayHand()
  */
 void Player::displayHand(Player::node *head)
 {
+	static int formatter = 1;
     if(!head)
         return;
     cout << "[ " << head->data->getSideA()
          << "|" << head->data->getSideB() << " ]";
+	if(formatter % 5 == 0)
+		cout << endl << endl;
+	formatter++;
     displayHand(head->next);
 }
 
@@ -224,11 +228,14 @@ ostream &operator<<(ostream &out,  Player &aPlayer)
     int playerNo;
     aPlayer.getPlayerNo(playerNo);
     aPlayer.getPoints(score);
-    out << "\tPlayer " << playerNo << "\n\t Current Hand: ";
+    out << "Player " << playerNo << "\n\t  ";
     aPlayer.displayHand();
-    out << "\t Most recently added bone: \n";
+    out << "\t Most recently added bone: \n\t ";
     aPlayer.getEnd()->data->printSides();
     out << endl;
+	out << "\t Bones in hand: " << aPlayer.handCount
+		<< endl;
+
 
     return out;
 }
